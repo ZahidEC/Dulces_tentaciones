@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="es">
+  <!-- 01 CONFIGURACIÓN DE LA PÁGINA -->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Dulces Tentaciones: postres y pan artesanal hechos con amor."
+    />
+    <title>Dulces Tentaciones | Postres artesanales</title>
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <link rel="stylesheet" href="css.css" />
+    <script src="js.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#inicio">Ir al contenido</a>
+
+    <!-- 02 MENÚ FIJO Y LOGO -->
+    <header class="header">
+      <div class="nav-wrap">
+        <a class="brand" href="#inicio" aria-label="Dulces Tentaciones, inicio"
+          ><img
+            src="img/logo-dulces-tentaciones.jpg"
+            width="120"
+            height="120"
+            alt="Dulces Tentaciones — Postres para el corazón" /></a
+        ><button
+          class="menu-toggle"
+          aria-controls="menu"
+          aria-expanded="false"
+          aria-label="Abrir menú"
+        >
+          <span></span><span></span><span></span>
+        </button>
+        <nav id="menu" aria-label="Navegación principal">
+          <a href="#inicio" class="active">Inicio</a
+          ><a href="#mesa">Nuestra mesa</a><a href="#eventos">Eventos</a
+          ><a href="#nosotros">Sobre nosotros</a
+          ><a href="#ordenar">Cómo ordenar</a><a href="#ubicacion">Ubicación</a
+          ><a class="button nav-order" href="#ordenar">Pedir ahora ↗</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <!-- 03 PORTADA -->
+      <section class="hero" id="inicio" aria-labelledby="hero-title">
+        <div class="hero-background" aria-hidden="true"></div>
+        <div class="hero-content">
+          <p class="eyebrow">DULCES TENTACIONES · HECHO CON AMOR</p>
+          <h1 id="hero-title">
+            Si vamos a caer,<br /><span>que sea en la</span><br /><em
+              >Tentación</em
+            ><span class="heart" aria-hidden="true"> ♡</span>
+          </h1>
+          <div class="brush" aria-hidden="true"></div>
+          <p class="hero-description">
+            Postres y pan artesanal<br />hechos con amor.
+          </p>
+          <a class="button" href="#ordenar">Pedir por WhatsApp ↗</a
+          ><a class="hero-link" href="#mesa">Descubre nuestra mesa ↓</a>
+        </div>
+      </section>
+
+      <!-- 04 CATÁLOGO (productos en js.js) -->
+      <section class="section" id="mesa">
+        <div class="section-heading">
+          <p class="eyebrow">UN MOMENTO PARA CONSENTIRTE</p>
+          <h2>Nuestra mesa de postres</h2>
+          <p>
+            Elige tu próxima tentación y consulta las presentaciones
+            disponibles.
+          </p>
+        </div>
+        <div class="table-top"><div class="products" id="products"></div></div>
+      </section>
+
+      <!-- 05 EVENTOS -->
+      <section class="occasion" id="eventos">
+        <div class="occasion-copy">
+          <p class="eyebrow">PARA LOS MOMENTOS QUE COMPARTIMOS</p>
+          <h2>Para momentos<br />que merecen algo<br />extra especial.</h2>
+          <p>
+            <span class="event-list"
+              >♡ Cumpleaños<br />♡ Reuniones<br />♡ Eventos especiales<br />♡
+              Fechas importantes</span
+            >
+          </p>
+          <a href="#ordenar" class="button">Consultar un pedido especial</a>
+        </div>
+        <figure class="occasion-photo">
+          <img
+            src="img/mesa-compartir-vasos-altos.jpg"
+            alt="Pan de zanahoria, brownie con fresas y vasitos de tapioca sobre una mesa de madera"
+            loading="lazy"
+            width="1448"
+            height="1086"
+          />
+          <figcaption>Postres para el corazón ♡</figcaption>
+        </figure>
+      </section>
+
+      <!-- 06 NUESTRA HISTORIA -->
+      <section class="about" id="nosotros">
+        <div class="about-inner section">
+          <img
+            src="img/nuestro-stand.png"
+            width="1680"
+            height="1472"
+            loading="lazy"
+            alt="El equipo de Dulces Tentaciones en su stand de postres artesanales"
+          />
+          <div>
+            <p class="eyebrow">HECHO CON AMOR</p>
+            <h2>Detrás de cada tentación,<br />hay una historia.</h2>
+            <p>
+              Somos Dulces Tentaciones. Te invitamos a conocer nuestra mesa de
+              postres y pan artesanal, y a compartir un momento dulce con
+              nosotros.
+            </p>
+            <p class="signature">Postres para el corazón ♡</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 07 FORMULARIO DE PEDIDO -->
+      <section class="section order" id="ordenar">
+        <div class="section-heading">
+          <p class="eyebrow">TU PRÓXIMA TENTACIÓN</p>
+          <h2>Cómo ordenar</h2>
+        </div>
+        <div class="steps">
+          <div>
+            <b>1</b><span class="step-icon" aria-hidden="true">♧</span>
+            <h3>Elige tus postres</h3>
+            <p>Agrégalos desde nuestra mesa.</p>
+          </div>
+          <div>
+            <b>2</b><span class="step-icon" aria-hidden="true">✉</span>
+            <h3>Cuéntanos los detalles</h3>
+            <p>Indica cantidades y fecha deseada.</p>
+          </div>
+          <div>
+            <b>3</b><span class="step-icon" aria-hidden="true">♡</span>
+            <h3>Confirma por WhatsApp</h3>
+            <p>Acordamos disponibilidad y entrega contigo.</p>
+          </div>
+        </div>
+        <form id="order-form" class="order-form">
+          <h3>Tu solicitud de pedido <span id="count">(0)</span></h3>
+          <div id="cart" aria-live="polite"></div>
+          <div class="fields">
+            <label
+              >Tu nombre<input
+                name="nombre"
+                autocomplete="name"
+                required
+                maxlength="80" /></label
+            ><label
+              >Fecha deseada<input type="date" name="fecha" required
+            /></label>
+          </div>
+          <label
+            >Notas o pedido especial<textarea
+              name="notas"
+              rows="3"
+              maxlength="1000"
+              placeholder="Cuéntanos qué necesitas y consulta las opciones de entrega o recolección."
+            ></textarea></label
+          ><button class="button" type="submit">
+            Enviar solicitud por WhatsApp ↗
+          </button>
+          <p class="fine-print">
+            Tu pedido queda confirmado cuando acordamos los detalles contigo por
+            WhatsApp.
+          </p>
+          <p id="order-status" role="status"></p>
+        </form>
+      </section>
+
+      <!-- 08 UBICACIÓN -->
+      <section class="location" id="ubicacion">
+        <div class="location-copy">
+          <p class="eyebrow">VEN A CONOCERNOS</p>
+          <h2>¿Dónde estamos?</h2>
+          <p>
+            Consulta por WhatsApp la ubicación actual de nuestro stand y
+            nuestros próximos días de atención.
+          </p>
+          <a class="button" href="#ordenar">Consultar ubicación y horarios</a>
+        </div>
+        <img
+          src="img/nuestro-stand.png"
+          alt="Nuestro stand de Dulces Tentaciones"
+          loading="lazy"
+        />
+        <div class="location-cta">
+          <h3>¿Antojado?</h3>
+          <p>¡Escríbenos!</p>
+          <a class="button" href="#ordenar">Pedir ahora ↗</a>
+        </div>
+      </section>
+    </main>
+    <aside class="mobile-order-bar" aria-label="Acceso rápido a tu pedido">
+      <div>
+        <strong
+          >Tu pedido
+          <span id="mobile-order-count" aria-live="polite">(0)</span></strong
+        ><small>Elige tus postres y ordénalos aquí</small>
+      </div>
+      <a class="button" href="#ordenar">Hacer pedido ↗</a>
+    </aside>
+    <footer class="floral-footer">
+      <a href="#inicio">Dulces Tentaciones</a>
+      <p>Postres y pan artesanal · Postres para el corazón ♡</p>
+      <small>© <span id="year"></span> Dulces Tentaciones</small>
+    </footer>
+  </body>
+</html>
