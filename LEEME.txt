@@ -1,0 +1,53 @@
+DULCES TENTACIONES — GUÍA PARA EDITAR
+
+Abre index.html en tu navegador o usa Live Server en Visual Studio Code.
+
+1. TEXTOS Y SECCIONES → index.html
+   El archivo está indentado y tiene comentarios numerados:
+   01 Configuración: título, descripción, favicon y enlaces.
+   02 Menú fijo y logo.
+   03 Portada.
+   04 Catálogo: sus tarjetas se generan desde js.js.
+   05 Eventos.
+   06 Nuestra historia.
+   07 Formulario de pedido.
+   08 Ubicación.
+   Al final: barra móvil y pie de página.
+
+2. COLORES Y DISEÑO → css.css
+   Al principio, :root contiene los colores y el tamaño del menú.
+   El índice indica dónde está cada sección.
+   09 RESPONSIVE contiene los ajustes por pantalla:
+   - Hasta 1100px: tablet y menú desplegable.
+   - Hasta 760px: móvil, columnas apiladas y barra de pedido.
+   - Hasta 380px: catálogo de una columna.
+   Modifica la regla existente; evita pegar correcciones repetidas al final.
+
+3. PRODUCTOS Y WHATSAPP → js.js
+   WHATSAPP_NUMBER: coloca tu número internacional, solo dígitos.
+   Ejemplo de formato para México: 52 seguido de los 10 dígitos.
+   products: cada objeto contiene id, name e image.
+   Para agregar un producto, copia un objeto y utiliza un id único.
+   Conserva el mismo id cuando solo cambies su nombre o fotografía.
+   El resto del archivo está dividido en bloques comentados para menú,
+   catálogo, carrito, formulario y navegación.
+
+4. IMÁGENES → img/
+   Logo: logo-dulces-tentaciones.jpg
+   Icono de pestaña: favicon.png
+   Fondo de escritorio: hero-postres-vasos-altos.jpg
+   Fondo móvil: hero-movil-identidad.jpg
+   Eventos: mesa-compartir-vasos-altos.jpg
+   Foto real: nuestro-stand.png
+   Fotos de productos: consulta sus rutas en products, dentro de js.js.
+
+5. COMPORTAMIENTO
+   El pedido se guarda en el navegador con localStorage.
+   El formulario abre WhatsApp con un resumen; el cliente debe enviarlo.
+   Configura WHATSAPP_NUMBER antes de publicar.
+   No hay cobro automático ni confirmación automática de pedidos.
+
+VERIFICACIÓN
+   Revisado en Chromium a 320, 390, 760, 820 y 1440px, sin desbordamiento
+   horizontal en secciones e imágenes. Comprobados menú móvil, carrito,
+   contador sincronizado y persistencia al recargar.

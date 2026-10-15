@@ -1,0 +1,778 @@
+/* ÍNDICE
+   01 Configuración y base
+   02 Menú fijo
+   03 Portada
+   04 Catálogo
+   05 Eventos
+   06 Historia
+   07 Pedido
+   08 Ubicación y pie
+   09 Tablet y celular
+*/
+
+/* 01. CONFIGURACIÓN: cambia aquí colores, ancho y tamaños generales. */
+:root {
+  --cream: #f7ead8;
+  --paper: #fff7e9;
+  --wine: #873647;
+  --rose: #d89b9e;
+  --brown: #523727;
+  --chalk: #292824;
+  --nav-height: 132px;
+  --content-width: 1280px;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-height) + 16px);
+}
+body {
+  margin: 0;
+  padding-top: var(--nav-height);
+  background: var(--cream);
+  color: var(--brown);
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+main {
+  width: 100%;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+figure {
+  margin: 0;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button,
+input,
+textarea {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+h1,
+h2 {
+  font-family: Georgia, serif;
+  font-weight: 400;
+  line-height: 1.12;
+}
+h2 {
+  font-size: clamp(28px, 3.4vw, 44px);
+  margin-bottom: 22px;
+}
+h3 {
+  line-height: 1.3;
+}
+:focus-visible {
+  outline: 3px solid var(--rose);
+  outline-offset: 4px;
+}
+[hidden] {
+  display: none !important;
+}
+.section {
+  width: 100%;
+  max-width: var(--content-width);
+  margin-inline: auto;
+  padding: 64px 5%;
+}
+.section-heading {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.eyebrow {
+  color: var(--wine);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin-bottom: 16px;
+}
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 13px 20px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: var(--wine);
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: center;
+}
+.button:hover {
+  background: #6f2938;
+}
+.skip {
+  position: fixed;
+  top: -100px;
+  left: 12px;
+  z-index: 200;
+  padding: 12px;
+  background: white;
+}
+.skip:focus {
+  top: 12px;
+}
+
+/* 02. MENÚ FIJO: altura igual a --nav-height para no cubrir el contenido. */
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  background: var(--cream);
+  border-bottom: 1px solid #52372718;
+}
+.nav-wrap {
+  height: var(--nav-height);
+  max-width: 1440px;
+  margin: auto;
+  padding: 6px 4%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.brand {
+  flex-shrink: 0;
+}
+.brand img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: contain;
+}
+#menu {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 1.6vw, 24px);
+}
+#menu a {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+#menu a.active:not(.button) {
+  color: var(--wine);
+  text-decoration: underline;
+  text-underline-offset: 8px;
+}
+.menu-toggle {
+  display: none;
+}
+
+/* 03. PORTADA: fotografía horizontal en escritorio; vertical en móvil. */
+.hero {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 600px;
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+}
+.hero-background {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: url("img/hero-postres-vasos-altos.jpg") center/cover no-repeat;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, #f7ead8e6, #f7ead870 36%, transparent 56%);
+}
+.hero-content {
+  width: 100%;
+  padding: 50px 5%;
+}
+.hero h1 {
+  max-width: 46%;
+  font-size: clamp(38px, 4.5vw, 70px);
+  color: var(--wine);
+  margin-bottom: 0;
+}
+.hero h1 span:not(.heart) {
+  color: var(--brown);
+}
+.hero h1 em {
+  color: #bb7278;
+  font-style: normal;
+}
+.heart {
+  color: #bb7278;
+}
+.hero .eyebrow {
+  max-width: 43%;
+  font-size: 9px;
+}
+.brush {
+  width: 26%;
+  height: 4px;
+  border-radius: 80%;
+  background: var(--rose);
+  transform: rotate(-2deg);
+  margin: 22px 0;
+}
+.hero-description {
+  max-width: 40%;
+  font-size: 21px;
+  line-height: 1.4;
+  margin-bottom: 25px;
+}
+.hero-link {
+  display: block;
+  width: fit-content;
+  font-size: 12px;
+  margin-top: 18px;
+}
+
+/* 04. CATÁLOGO: tarjetas de igual altura y botones alineados. */
+#mesa .section-heading {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 40px;
+  text-align: left;
+  align-items: center;
+}
+#mesa .eyebrow {
+  grid-column: 1;
+  margin-bottom: 0;
+}
+#mesa h2 {
+  grid-column: 1;
+  margin-bottom: 0;
+}
+#mesa .section-heading > p:last-child {
+  grid-column: 2;
+  grid-row: 1/3;
+  margin: 0;
+}
+.table-top {
+  padding: 20px;
+  background: #704b36;
+  border: 4px solid #976c46;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px #52372720;
+}
+.products {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+.product {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--paper);
+  border-radius: 6px;
+}
+.product-image {
+  aspect-ratio: 4/3;
+  background: #eadcc8;
+  display: grid;
+  place-items: center;
+}
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.placeholder {
+  text-align: center;
+  font-size: 12px;
+}
+.placeholder span {
+  display: block;
+  font-size: 36px;
+}
+.product-content {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.product h3 {
+  font-family: Georgia, serif;
+  font-size: 21px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+.product p {
+  font-size: 12px;
+  line-height: 1.5;
+}
+.product .button {
+  width: 100%;
+  font-size: 11px;
+  padding: 10px 8px;
+  margin-top: auto;
+}
+
+/* 05. EVENTOS: una cuadrícula propia, independiente del contenedor .section. */
+.occasion {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  background: var(--rose);
+}
+.occasion-copy {
+  padding: clamp(32px, 5vw, 72px);
+  align-self: center;
+}
+.occasion .eyebrow {
+  display: none;
+}
+.occasion h2 {
+  font-size: clamp(28px, 3.2vw, 44px);
+}
+.event-list {
+  display: block;
+  line-height: 2;
+  font-size: 14px;
+}
+.occasion-photo {
+  min-width: 0;
+  display: flex;
+}
+.occasion-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 4/3;
+}
+.occasion-photo figcaption {
+  display: none;
+}
+
+/* 06. HISTORIA: imagen y texto dentro de un contenedor común. */
+.about {
+  background: var(--chalk);
+  color: var(--cream);
+}
+.about-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: center;
+}
+.about-inner > img {
+  width: 100%;
+  border: 10px solid var(--cream);
+  border-bottom-width: 28px;
+  border-radius: 3px;
+}
+.about .eyebrow,
+.signature {
+  color: var(--rose);
+}
+.signature {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 24px;
+}
+
+/* 07. PEDIDO: pasos, carrito y formulario. */
+.order .section-heading .eyebrow {
+  display: none;
+}
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 30px;
+  text-align: center;
+  margin-bottom: 38px;
+}
+.steps b {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--rose);
+  color: white;
+  margin-right: 12px;
+}
+.step-icon {
+  font-size: 38px;
+}
+.steps h3 {
+  font-family: Georgia, serif;
+  font-size: 20px;
+  margin: 12px 0;
+}
+.steps p {
+  font-size: 13px;
+}
+.order-form {
+  width: 100%;
+  max-width: 780px;
+  margin: auto;
+  padding: 28px;
+  background: var(--paper);
+  border: 1px solid #d8c7b8;
+  border-radius: 10px;
+}
+.fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+label {
+  display: block;
+  margin: 16px 0;
+  font-size: 13px;
+  font-weight: 700;
+}
+input,
+textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #c9b4a2;
+  border-radius: 6px;
+  background: white;
+  padding: 12px;
+  margin-top: 8px;
+  font-size: 16px;
+  color: var(--brown);
+}
+textarea {
+  resize: vertical;
+}
+.fine-print,
+.empty {
+  font-size: 12px;
+  color: #735c4b;
+}
+.cart-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid #eadbcb;
+}
+.cart-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.cart-controls button {
+  width: 44px;
+  height: 44px;
+  border: 1px solid #c9b4a2;
+  border-radius: 5px;
+  color: var(--brown);
+  background: var(--cream);
+}
+#order-status {
+  color: var(--wine);
+  font-size: 13px;
+}
+.mobile-order-bar {
+  display: none;
+}
+
+/* 08. UBICACIÓN Y PIE. */
+.location {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) minmax(0, 1fr);
+  background: var(--wine);
+  color: var(--cream);
+}
+.location-copy,
+.location-cta {
+  padding: 32px;
+}
+.location-copy .eyebrow {
+  color: var(--cream);
+}
+.location h2 {
+  font-size: 28px;
+}
+.location p {
+  font-size: 14px;
+}
+.location-copy .button {
+  background: var(--cream);
+  color: var(--wine);
+}
+.location > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.location-cta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background: var(--chalk);
+}
+.location-cta h3 {
+  font-family: Georgia, serif;
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+.location-cta p {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 24px;
+}
+.location-cta .button {
+  border-color: var(--cream);
+  background: transparent;
+}
+footer {
+  padding: 24px 20px;
+  background: var(--chalk);
+  color: var(--cream);
+  text-align: center;
+}
+footer > a {
+  font-family: Georgia, serif;
+  font-size: 23px;
+}
+footer p {
+  font-size: 12px;
+  margin: 10px 0;
+}
+footer small {
+  font-size: 10px;
+}
+
+/* 09. RESPONSIVE: tablet <= 1100px; celular <= 760px; pequeño <= 380px. */
+@media (max-width: 1100px) {
+  :root {
+    --nav-height: 112px;
+  }
+  .brand img {
+    width: 100px;
+    height: 100px;
+  }
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 13px;
+    background: transparent;
+    border: 1px solid #c9b4a2;
+    border-radius: 6px;
+  }
+  .menu-toggle span {
+    width: 24px;
+    height: 2px;
+    background: var(--brown);
+  }
+  #menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 20px 5%;
+    background: var(--cream);
+    max-height: calc(100dvh - var(--nav-height) - 90px);
+    overflow-y: auto;
+    box-shadow: 0 8px 16px #52372720;
+  }
+  #menu.open {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+  }
+  #menu a {
+    padding: 12px;
+  }
+  .products {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .hero {
+    aspect-ratio: auto;
+    min-height: 620px;
+  }
+  .hero h1 {
+    font-size: 44px;
+  }
+  .location {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .location-cta {
+    grid-column: 1/-1;
+  }
+}
+@media (max-width: 760px) {
+  body {
+    padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px));
+  }
+  .section {
+    padding: 44px 6%;
+  }
+  .hero {
+    min-height: 860px;
+    aspect-ratio: 9/16;
+    align-items: flex-start;
+  }
+  .hero-background {
+    background-image: url("img/hero-movil-identidad.jpg");
+    background-size: 100% 100%;
+  }
+  .hero::before {
+    background: linear-gradient(#fff8eb18, transparent 60%);
+  }
+  .hero-content {
+    padding: 80px 7% 0;
+  }
+  .hero h1 {
+    max-width: 100%;
+    font-size: clamp(32px, 7vw, 48px);
+  }
+  .hero .eyebrow {
+    max-width: 100%;
+    font-size: 8px;
+  }
+  .hero-description {
+    max-width: 100%;
+    font-size: 18px;
+  }
+  .brush {
+    width: 65%;
+    margin: 18px 0;
+  }
+  #mesa .section-heading {
+    display: block;
+  }
+  #mesa .section-heading > p:last-child {
+    margin-top: 18px;
+    font-size: 14px;
+  }
+  .products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .table-top {
+    padding: 12px;
+    border-width: 3px;
+  }
+  .product-content {
+    padding: 12px;
+  }
+  .product h3 {
+    font-size: 20px;
+  }
+  .occasion {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .occasion-copy {
+    padding: 36px 7%;
+  }
+  .occasion-photo img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/3;
+  }
+  .about-inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 30px;
+  }
+  .steps {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+  .steps p {
+    margin-bottom: 0;
+  }
+  .fields {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+  .order-form {
+    padding: 22px 18px;
+  }
+  .location {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .location > img {
+    height: auto;
+    aspect-ratio: 4/3;
+  }
+  .location-copy,
+  .location-cta {
+    padding: 30px 7%;
+  }
+  .mobile-order-bar {
+    position: fixed;
+    inset: auto 0 0;
+    z-index: 110;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 5% calc(12px + env(safe-area-inset-bottom, 0px));
+    background: var(--cream);
+    border-top: 1px solid #c9b4a2;
+    box-shadow: 0 -4px 16px #52372715;
+  }
+  .mobile-order-bar strong {
+    display: block;
+    font-family: Georgia, serif;
+    font-size: 19px;
+    color: var(--wine);
+  }
+  .mobile-order-bar small {
+    display: block;
+    font-size: 10px;
+  }
+  .mobile-order-bar .button {
+    flex-shrink: 0;
+    padding: 13px 15px;
+    font-size: 12px;
+  }
+}
+@media (max-width: 380px) {
+  .products {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .product-image {
+    aspect-ratio: 4/3;
+  }
+  .mobile-order-bar {
+    padding-inline: 12px;
+  }
+  .mobile-order-bar strong {
+    font-size: 17px;
+  }
+  .mobile-order-bar small {
+    max-width: 145px;
+    line-height: 1.3;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
